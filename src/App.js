@@ -1,11 +1,11 @@
+import Landing from "./components/landing";
+import Navbar from "./components/navbar";
 function App() {
     return (
         <div className="App">
-            <header className="App-header">
-                <p className="bg-slate-500">
-                    Ruslan Krasiy
-                </p>
-            </header>
+            <Landing />
+            <Navbar />
+            <div className="h-[2000px]"></div>
         </div>
     );
 }
