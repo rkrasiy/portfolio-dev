@@ -1,6 +1,7 @@
-export default function Navbar(){
+
+export default function Navbar(props){
     return (
-        <nav className="sticky top-0 left-0 bg-slate-600">
+        <nav ref={props.dom} className="sticky top-0 left-0 bg-slate-600">
             <div className="container mx-auto p-2">
                 <ul className="flex items-center gap-4">
                     <li>Home</li>

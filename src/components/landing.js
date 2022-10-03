@@ -1,6 +1,9 @@
 import Button from "./button";
 
-export default function Landing(){
+export default function Landing(props){
+    const clickHandler = ()=>{
+        props.click()
+    }
     return (
         <div className="w-full h-screen relative flex flex-row items-center justify-center bg-gray-900">
             <div className="text-center">
@@ -12,7 +15,7 @@ export default function Landing(){
                         I'm a front-end web developer.
                     </p>
                 </div>
-                <Button basic inverted className="text-2xl">
+                <Button basic inverted className="text-2xl" onClick={clickHandler}>
                     View my work
                 </Button>
 

@@ -1,15 +1,10 @@
 import {SiFacebook, SiLinkedin, SiGithub } from "react-icons/si";
 import {AiOutlineCopyrightCircle} from "react-icons/ai";
 import {BsChevronDoubleUp} from "react-icons/bs";
+import { scrollTo } from "./utils";
 
 export default function Footer() {
-    const scrollTop = (e) => {
-        window.scroll({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
+    const scrollTop = (e) => scrollTo()
     
     return (
         <footer className="bg-gray-900 text-center px-4 pt-12 pb-4 relative">

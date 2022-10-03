@@ -9,8 +9,13 @@ export default function Button (props){
     if(props.className){
         classes += " " + props.className
     }
+
+    const clickHandler = ()=>{
+        props.onClick()
+    }
+
     return (
-        <button className={classes}>
+        <button className={classes} onClick={clickHandler}>
             {props.children}
         </button>
     )
