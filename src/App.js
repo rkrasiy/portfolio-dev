@@ -5,6 +5,7 @@ import Footer from "./footer";
 import {useRef} from "react";
 import {scrollTo} from "./utils"
 import Canvas from "./components/canvas/canvas";
+import StaticCanvas from "./components/canvas/static-canvas";
 function App() {
     const menuRef = useRef();
     const sections = [
@@ -16,7 +17,7 @@ function App() {
     const scrollHandler = () =>{
         scrollTo(menuRef)
     }
-    
+
     const draw = (ctx, frameCount) => {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         ctx.fillStyle = '#ddd';
@@ -27,7 +28,10 @@ function App() {
 
     return (
         <div className="App">
-            <Canvas draw={draw}/>
+            <img src="./images/image.jpeg" id="image"/>
+
+            {/* <Canvas draw={draw}/> */}
+            <StaticCanvas img="./images/image.jpeg"/>
             {/* <Landing click={scrollHandler}/>
             <Navbar dom={menuRef} />
             {

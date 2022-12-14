@@ -1,4 +1,5 @@
 function resizeCanvasToDisplaySize(canvas){
+    console.log("resizeCanvasToDisplaySize")
     const {width, height} = canvas.getBoundingClientRect();
 
     if(canvas.width !== width || canvas.height !== height){
