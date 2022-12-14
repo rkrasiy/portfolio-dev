@@ -7,7 +7,7 @@ export default function Landing(props){
     return (
         <div className="w-full h-screen relative flex flex-row items-center justify-center bg-gray-900">
             <div className="text-center">
-                <div className="text-white text-5xl select-none mb-8">
+                {/* <div className="text-white text-5xl select-none mb-8">
                     <p>
                         Hello, I'm <span className="text-cyan-300">Ruslan Krasiy</span>.
                     </p>
@@ -17,10 +17,10 @@ export default function Landing(props){
                 </div>
                 <Button basic inverted className="text-2xl" onClick={clickHandler}>
                     View my work
-                </Button>
+                </Button> */}
 
             </div>
-            
+            <img src="./images/image.jpeg" />
         </div>
     )
 }
