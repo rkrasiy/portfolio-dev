@@ -6,7 +6,17 @@
     body {
         @apply bg-slate-900
     }
-    canvas {
-        /* @apply w-full h-screen */
+    .dropdown-item {
+        position: relative;
+    }
+    .dropdown-item i{
+        border-width: 8px;
+        border-style: solid;
+        border-color: red;
+        border-right-color: transparent;
+        width: 8px;
+        border-left-width: 0;
+        border-bottom: none;
+        position: absolute;
     }
 }
