@@ -5,12 +5,18 @@ const useCanvas = (draw, options = {}) => {
 
     useEffect(()=>{
         const canvas = canvasRef.current;
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
         const context = canvas.getContext(options.context || '2d');
+
         let frameCount = 0;
         let animationFrameId
 
         const render = ()=>{
             frameCount++;
+            context.clearRect(0, 0, canvas.width, canvas.height)
+            // context.fillStyle = "rgba(0,0,0, 0.01)";
+            // context.fillRect(0,0, canvas.width, canvas.height);
             draw(context, frameCount);
             animationFrameId = window.requestAnimationFrame(render)
         }

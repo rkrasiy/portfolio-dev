@@ -18,8 +18,8 @@ const Canvas = props => {
     const {context, ...moreConfig} = options
 
     const canvasRef = useCanvas(draw, {context});
-
-    return <canvas ref={canvasRef} {...rest} />
+   
+    return <canvas ref={canvasRef} {...rest}/>
 }
 
 

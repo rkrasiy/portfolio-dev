@@ -5,7 +5,7 @@ import Footer from "./footer";
 import {useRef} from "react";
 import {scrollTo} from "./utils"
 import Canvas from "./components/canvas/canvas";
-import StaticCanvas from "./components/canvas/static-canvas";
+import CanvasSection from "./components/canvas-section";
 function App() {
     const menuRef = useRef();
     const sections = [
@@ -19,19 +19,24 @@ function App() {
     }
 
     const draw = (ctx, frameCount) => {
+        //frameCount = integer
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         ctx.fillStyle = '#ddd';
         ctx.beginPath();
-        ctx.arc(50, 100, 20*Math.sin(frameCount*0.05)**2, 0, 2*Math.PI);
+       // console.log(frameCount)
+        // const x = 10*Math.sin(frameCount*0.05)**2;
+        // const y = 10*Math.sin(frameCount*0.05)**2;
+        const x = (Math.random() * 100) + 1;
+        const y = (Math.random() * 100) + 1;
+        ctx.arc(x, y, 20, 0, Math.PI / 2);
         ctx.fill();
     }
 
     return (
         <div className="App">
-            <img src="./images/image.jpeg" id="image"/>
+            {/* <img src="./images/image.jpeg" id="image"/> */}
+            <CanvasSection />
 
-            {/* <Canvas draw={draw}/> */}
-            <StaticCanvas img="./images/image.jpeg"/>
             {/* <Landing click={scrollHandler}/>
             <Navbar dom={menuRef} />
             {
