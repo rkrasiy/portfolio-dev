@@ -8,6 +8,7 @@ import Home from './pages/home';
 import NoPage from './pages/no-page';
 import Layout from './pages/layout';
 import reportWebVitals from './reportWebVitals';
+import TextEffect from './pages/text-effect';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,7 @@ root.render(
                 <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="/space" element={<Space />} />
+                <Route path="/text-effect" element={<TextEffect />} />
                 <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>

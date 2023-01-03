@@ -16,9 +16,9 @@ const Canvas = props => {
 
     const { draw, options = {}, ...rest } = props
     const {context, ...moreConfig} = options
+    const {children} = rest;
 
-    const canvasRef = useCanvas(draw, {context});
-   
+    const canvasRef = useCanvas(draw, {context, text: children});
     return <canvas ref={canvasRef} {...rest}/>
 }
 

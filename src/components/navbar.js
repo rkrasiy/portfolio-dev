@@ -4,19 +4,20 @@ import { NavLink } from "react-router-dom"
 export default function Navbar(props){
 
     const menu = [
-        {title: "Home", path: "/", id:"1"},
+        {title: "Home", path: "/"},
         {title: "Blogs", path: "/blogs",id: "2"},
         {title: "Contact", path: "/contact", id: "3"},   
-        {title: "Space", path: "space", id: "4"},   
+        {title: "Space", path: "/space", id: "4"},   
+        {title: "Text", path: "/text-effect", id: "5"},   
     ]
 
-    const activeClassName = "text-red-600"
+    const activeClassName = "text-red-600 "
     return (
         <nav ref={props.dom} className="fixed top-0 left-0 w-full bg-slate-600">
             <div className="container mx-auto">
                 <ul className="flex items-center gap-4">
-                    {menu.map( item => {
-                        return <li key={item.id} >
+                    {menu.map( (item) => {
+                        return <li key={item.title} >
                             <NavLink 
                                 to={item.path} 
                                 className={
