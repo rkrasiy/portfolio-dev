@@ -1,8 +1,7 @@
 import Canvas from "../components/canvas/canvas";
-import  { useEffect, useState } from "react";
+import  { useEffect } from "react";
 
 export default function Space () {
-    const [ isMovingMouse, setIsMovingMouse ] = useState(false)
     //const [particles, setParticles] = useState([])
     const particles = [];
     const text = "Ruslan";
@@ -34,16 +33,12 @@ export default function Space () {
     const mouseMoveHandler = (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
-        setIsMovingMouse(true)
     }
-    const mouseLeaveHandler = (e) => {
-        setIsMovingMouse(false)
-    }
+
 
     const draw = (ctx ) => {
         for(let particle of particles){
-            let posX,posY;
-            if(isMovingMouse){
+            if(mouse.x && mouse.y){
               //  console.log("Enter")
                 let dx = mouse.x - particle.x;
                 let dy = mouse.y - particle.y;
@@ -60,8 +55,6 @@ export default function Space () {
                 if(distance < mouse.radius) {
                     particle.x -= directionX;
                     particle.y -= directionY;
-                    posX = particle.x - directionX;
-                    posY = particle.y - directionY;
                 }else{
                     if(particle.x !== particle.baseX){
                         const dx = particle.x - particle.baseX;
@@ -72,9 +65,6 @@ export default function Space () {
                         particle.y -= dy/5;
                     }
                 }
-            }else{
-                posX = particle.baseX;
-                posY = particle.baseY;
             }
 
             ctx.beginPath();
@@ -84,7 +74,7 @@ export default function Space () {
         }
     }
 
-    return <div  onMouseMove={mouseMoveHandler} onMouseLeave={mouseLeaveHandler} className="overflow-hidden max-h-screen">
+    return <div  onMouseMove={mouseMoveHandler} className="overflow-hidden max-h-screen">
             <Canvas draw={draw}/>
         </div>
 }
