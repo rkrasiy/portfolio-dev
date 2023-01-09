@@ -1,17 +1,10 @@
 import Landing from "./components/landing";
-import Navbar from "./components/navbar";
-import Section from "./components/section";
-import Footer from "./footer";
 import {useRef} from "react";
-import {scrollTo} from "./utils"
+import {scrollTo} from "./utils";
+//import CircularImage from "./components/circular-text";
 
 function App() {
     const menuRef = useRef();
-    const sections = [
-        {title: "About"},
-        {title: "Portfolio"},
-        {title: "Contact"},
-    ]
 
     const scrollHandler = () =>{
         scrollTo(menuRef)
@@ -19,14 +12,7 @@ function App() {
 
     return (
         <div className="App">
-            <Landing click={scrollHandler}/>
-            <Navbar dom={menuRef} />
-            {
-                sections.map( sec => (
-                    <Section key={sec.title} title={sec.title} />
-                ))
-            }
-           <Footer />
+            <Landing  click={scrollHandler}/>
         </div>
     );
 }
