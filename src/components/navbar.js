@@ -9,6 +9,7 @@ export default function Navbar(props){
         {title: "Contact", path: "/contact", id: "3"},   
         {title: "Space", path: "/space", id: "4"},   
         {title: "Text", path: "/text-effect", id: "5"},   
+        {title: "Space-2", path: "/space-2", id: "5"},   
     ]
 
     const activeClassName = "text-red-600 "
