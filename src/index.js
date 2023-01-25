@@ -10,6 +10,7 @@ import Layout from './pages/layout';
 import reportWebVitals from './reportWebVitals';
 import TextEffect from './pages/text-effect';
 import Space2 from './pages/space-2';
+import Image from './pages/image';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -21,6 +22,7 @@ root.render(
                 <Route path="/space" element={<Space />} />
                 <Route path="/text-effect" element={<TextEffect />} />
                 <Route path="/space-2" element={<Space2 />} />
+                <Route path="/image" element={<Image />} />
                 <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>

@@ -6,8 +6,8 @@ export default function Space () {
     const particles = [];
     const text = "Ruslan";
 
-    useEffect(()=>{
-        for(let i = 0; i < 1000; i++){
+
+    for(let i = 0; i < 1000; i++){
             const x = Math.random() * window.innerWidth;
             const y = Math.random() * window.innerHeight;
             const particle = {
@@ -21,8 +21,22 @@ export default function Space () {
             particles.push(particle)
         }
 
-    })
+    // useEffect(()=>{
+    //     for(let i = 0; i < 1000; i++){
+    //         const x = Math.random() * window.innerWidth;
+    //         const y = Math.random() * window.innerHeight;
+    //         const particle = {
+    //             x: x,
+    //             y: y,
+    //             size: 3,
+    //             baseX: x,
+    //             baseY: y,
+    //             density: (Math.random() * 30) + 1
+    //         }
+    //         particles.push(particle)
+    //     }
 
+    // })
 
     const mouse = {
         x: null,
@@ -33,11 +47,22 @@ export default function Space () {
     const mouseMoveHandler = (e) => {
         mouse.x = e.clientX;
         mouse.y = e.clientY;
+        mouse.radius = 150
     }
 
+    const touchHandler = (e) => {
+        mouse.x = e.touches[0].clientX;
+        mouse.y =e.touches[0].clientY;
+        mouse.radius = 60;
+    }
 
     const draw = (ctx ) => {
-        for(let particle of particles){
+        for(let i = 0; i < particles.length; i++){
+            const particle = particles[i]
+         
+            const tr = particle.y / Math.cos(30);
+            const y = particle.y - tr;
+            const dy = (particle.y + y) / 2;
             if(mouse.x && mouse.y){
               //  console.log("Enter")
                 let dx = mouse.x - particle.x;
@@ -66,15 +91,32 @@ export default function Space () {
                     }
                 }
             }
+  
+            const prevPos = i == 0 ? 0 :  i - 1;
+
+            const prevParticle = particles[prevPos];
+
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineWidth = 1
+            ctx.lineTo(prevParticle.x,  prevParticle.y);   
+            ctx.strokeStyle  = `rgba(255, 255, 255, .25)`;
+            ctx.stroke(); 
+
 
             ctx.beginPath();
             ctx.fillStyle = "white";
-            ctx.arc(particle.x, particle.y, 1, 0, Math.PI * 2);
+            ctx.arc(particle.x, particle.y, 2, 0, Math.PI * 2);
             ctx.fill();
         }
     }
 
-    return <div  onMouseMove={mouseMoveHandler} className="overflow-hidden max-h-screen">
+    return (
+        <div 
+            onMouseMove={mouseMoveHandler} 
+            onTouchMove={touchHandler} 
+            className="overflow-hidden max-h-screen">
             <Canvas draw={draw}/>
         </div>
+    )
 }

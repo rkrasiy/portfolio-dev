@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react'
 
-const useCanvas = (draw, options = {}) => {
+const useTextCanvas = (draw, options = {}) => {
     const canvasRef = useRef(null);
     useEffect(()=>{
         const canvas = canvasRef.current;
@@ -69,4 +69,4 @@ const useCanvas = (draw, options = {}) => {
     return canvasRef
 }
 
-export default useCanvas;
+export default useTextCanvas;
