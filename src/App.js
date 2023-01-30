@@ -3,6 +3,8 @@ import {useRef} from "react";
 import {scrollTo} from "./utils"
 import Canvas from "./components/canvas/canvas";
 import CanvasSection from "./components/canvas-section";
+
+
 function App() {
     const menuRef = useRef();
 

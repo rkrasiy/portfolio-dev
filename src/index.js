@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css';
-import App from './App';
-import Space from './pages/space';
-import Home from './pages/home';
+
 import NoPage from './pages/no-page';
 import Layout from './pages/layout';
 import reportWebVitals from './reportWebVitals';
-import TextEffect from './pages/text-effect';
-import Space2 from './pages/space-2';
-import Image from './pages/image';
+
+
+import MouseMeteor from './pages/mouse-meteor';
+import Bubble from './pages/bubble';
+import Text from './pages/text';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -18,12 +18,11 @@ root.render(
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
-                <Route index element={<Home />} />
-                <Route path="/space" element={<Space />} />
-                <Route path="/text-effect" element={<TextEffect />} />
-                <Route path="/space-2" element={<Space2 />} />
-                <Route path="/image" element={<Image />} />
-                <Route path="*" element={<NoPage />} />
+                    <Route index element={<Bubble />} />
+                    <Route path="/mouse-meteor" element={<MouseMeteor />} />
+                    <Route path="/bubble" element={<Bubble />} />
+                    <Route path="/text" element={<Text />} />
+                    <Route path="*" element={<NoPage />} />
                 </Route>
             </Routes>
         </BrowserRouter>

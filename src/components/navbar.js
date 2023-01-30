@@ -1,21 +1,24 @@
-import { NavLink } from "react-router-dom"
-
+import { NavLink } from "react-router-dom";
+import { useState } from "react";
 
 export default function Navbar(props){
+ 	const [ openMenu, setOpenMenu] = useState(false);
 
     const menu = [
-        {title: "Home", path: "/"},
-        {title: "Blogs", path: "/blogs",id: "2"},
-        {title: "Contact", path: "/contact", id: "3"},   
-        {title: "Space", path: "/space", id: "4"},   
-        {title: "Text", path: "/text-effect", id: "5"},   
-        {title: "Space-2", path: "/space-2", id: "5"},   
-        {title: "Image", path: "/image", id: "6"},   
+        {title: "Mouse Meteor", path: "/mouse-meteor", id: "9"},   
+        {title: "Bubble", path: "/bubble", id: "10"},   
+        {title: "Text", path: "/text", id: "11"},   
     ]
 
-    const activeClassName = "text-red-600 "
+    const openMenuHanlder = (e) => {
+		setOpenMenu(!openMenu)
+	}
+
+    const activeClassName = "text-red-600 ";
+
     return (
-        <nav ref={props.dom} className="fixed top-0 left-0 w-full bg-slate-600">
+        <>
+            <nav ref={props.dom} className="fixed top-0 left-0 w-full z-50">
             <div className="container mx-auto">
                 <ul className="flex items-center gap-4">
                     {menu.map( (item) => {
@@ -31,27 +34,13 @@ export default function Navbar(props){
                 </ul>
             </div>
         </nav>
+         <div className="absolute top-0 left-0 h-screen w-full flex flex-row items-center justify-center text-white gap-4 text-lg z-40">
+				<p>Ruslan Krasiy</p>
+				<p onClick={openMenuHanlder} className="cursor-pointer">Fronend Developer</p>
+			</div>
+			{
+				openMenu && <div className="absolute z-50 top-0 right-0 w-1/2 h-screen bg-slate-400"></div>
+			}
+        </>
     )
 }
-
-/*
-*
-<li className="p-2">
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li className="p-2">
-                        <Link to="/blogs">Blogs</Link>
-                    </li>
-                    <li className="p-2">
-                        <Link to="/contact">Contact</Link>
-                    </li>
-                    <li className="group hover:bg-gray-500 p-2 pr-6 dropdown-item">
-                        <span>Canvas</span>
-                        <i className="rotate-[-225deg] group-hover:rotate-[-135deg] transition-all translate-y-[5px] translate-x-2 origin-center"></i>
-                        <div className="group-hover:block hidden absolute bg-slate-300 p-4 left-0 top-full min-w-full">
-                            <ul>
-                                <li><Link to="/space" >Space</Link></li>
-                            </ul>
-                        </div>
-                    </li>
-*/
