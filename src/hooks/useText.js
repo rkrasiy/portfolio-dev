@@ -125,7 +125,8 @@ const useText = () => {
         render()
 
         return ()=>{
-            window.cancelAnimationFrame(animationFrameId)
+            window.cancelAnimationFrame(animationFrameId);
+            document.removeEventListener('mousemove',  mouseMoveHandler)
         }
 
     })

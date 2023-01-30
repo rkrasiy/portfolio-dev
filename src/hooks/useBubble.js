@@ -3,12 +3,11 @@ import { useRef, useEffect, useState } from 'react'
 const useBubble = ( ) => {
     const canvasRef = useRef(null);
     const [ particleArray, setParticleArray] = useState([])
-    const [hue, setHue] = useState(0)
 
     useEffect(()=>{
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
-       // let frameCount = 0;
+        let frameCount = 0;
         //  const dpr = window.devicePixelRatio;
         const dpr = 1;
         var cw = window.innerWidth;
@@ -36,7 +35,6 @@ const useBubble = ( ) => {
             }
 
             for(let i = 0; i < particleArray.length; i++){
-                // particleArray[i].x += particleArray[i].speedX;
                 particleArray[i].y -= particleArray[i].speedY;
 
                 if(particleArray[i].size > 0.2) particleArray[i].size -= 0.025
@@ -48,7 +46,7 @@ const useBubble = ( ) => {
                 ctx.arc(particleArray[i].x, particleArray[i].y, particleArray[i].size, 0, Math.PI * 2);
                 ctx.fill();
 
-                if(particleArray[i].size <= 0.3 ){
+                if(particleArray[i].size <= 0.3 || particleArray[i].y <= 100 || particleArray[i].y >= ch - 100 ){
                 	particleArray.splice(i, 1);
                 	i--;
                 }
@@ -57,8 +55,7 @@ const useBubble = ( ) => {
         }
 
         const render = ()=>{
-            let frameCount = hue + 0.25
-            setHue(frameCount)
+            frameCount += 0.25
             context.clearRect(0, 0, canvas.width, canvas.height)
             context.fillStyle = "rgba(0,0,0, 0.01)";
             context.fillRect(0,0, canvas.width, canvas.height);

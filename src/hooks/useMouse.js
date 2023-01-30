@@ -19,11 +19,12 @@ const useMouse = ( draw, options = {} ) => {
             x: 0,
             y: 0
         }
-
-        document.addEventListener('mousemove', (e)=>{
+        const mouseHandler = (e)=>{
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-        })
+        }
+
+        document.addEventListener('mousemove', mouseHandler)
 
         let animationFrameId;
 
@@ -88,7 +89,8 @@ const useMouse = ( draw, options = {} ) => {
         render()
 
         return ()=>{
-            window.cancelAnimationFrame(animationFrameId)
+            window.cancelAnimationFrame(animationFrameId);
+            document.removeEventListener('mousemove',  mouseHandler)
         }
 
     },[draw])

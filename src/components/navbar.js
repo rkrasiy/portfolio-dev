@@ -5,8 +5,8 @@ export default function Navbar(props){
  	const [ openMenu, setOpenMenu] = useState(false);
 
     const menu = [
-        {title: "Mouse Meteor", path: "/mouse-meteor", id: "9"},   
-        {title: "Bubble", path: "/bubble", id: "10"},   
+        {title: "Bubbles", path: "/bubble", id: "10"},   
+        {title: "onMouseMove", path: "/mouse-meteor", id: "9"},   
         {title: "Text", path: "/text", id: "11"},   
     ]
 
@@ -14,25 +14,24 @@ export default function Navbar(props){
 		setOpenMenu(!openMenu)
 	}
 
-    const activeClassName = "text-red-600 ";
-
     return (
         <>
-            <nav ref={props.dom} className="fixed top-0 left-0 w-full z-50">
-            <div className="container mx-auto">
-                <ul className="flex items-center gap-4">
-                    {menu.map( (item) => {
-                        return <li key={item.title} >
-                            <NavLink 
-                                to={item.path} 
-                                className={
-                                    ({ isActive }) => isActive ? activeClassName : undefined
-                                }>
-                                {item.title}</NavLink>
-                        </li>
-                    })}
-                </ul>
-            </div>
+            <nav ref={props.dom} className="fixed top-0 left-0 w-full z-50 p-4">
+            <div className="flex items-center gap-4">
+                    {
+                        menu.map( item =>  ( 
+                            <NavLink to={item.path} key={item.id}>
+                                {({ isActive }) => (
+                                    <span
+                                        className={`text-white px-4 py-2 ${ isActive ? "border" : null}`
+                                        }>
+                                    {item.title}
+                                    </span>
+                                )}
+                            </NavLink>
+                        ))
+                    }
+                </div>
         </nav>
          <div className="absolute top-0 left-0 h-screen w-full flex flex-row items-center justify-center text-white gap-4 text-lg z-40">
 				<p>Ruslan Krasiy</p>
