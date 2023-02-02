@@ -57,8 +57,8 @@ const useBubble = ( ) => {
         const render = ()=>{
             frameCount += 0.25
             context.clearRect(0, 0, canvas.width, canvas.height)
-            context.fillStyle = "rgba(0,0,0, 0.01)";
-            context.fillRect(0,0, canvas.width, canvas.height);
+            // context.fillStyle = "rgba(0,0,0, 0.01)";
+            // context.fillRect(0,0, canvas.width, canvas.height);
 
             draw(context, frameCount);
             animationFrameId = window.requestAnimationFrame(render)
