@@ -15,7 +15,7 @@ const useScroll = () => {
         const elDom = elem.current;
         elDom.style.transform = `translateY(${pos}px)`;
 
-        const timerId = setInterval(refreshStyle, 2000);
+        const timerId = setInterval(refreshStyle, 2500);
         return function cleanup() {
             clearInterval(timerId);
         };

@@ -37,7 +37,7 @@ const useBubble = ( ) => {
             for(let i = 0; i < particleArray.length; i++){
                 particleArray[i].y -= particleArray[i].speedY;
 
-                if(particleArray[i].size > 0.2) particleArray[i].size -= 0.025
+                if(particleArray[i].size > 0.2) particleArray[i].size -= 0.05
                 else particleArray[i].size = particleArray[i].baseSize
                 
                 ctx.fillStyle = "hsl(" + color + ", 100%, 50%)";
