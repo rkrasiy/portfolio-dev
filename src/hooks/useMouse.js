@@ -16,8 +16,8 @@ const useMouse = ( draw, options = {} ) => {
         canvas.height = ch * dpr;
 
         const mouse = {
-            x: 0,
-            y: 0
+            x: cw / 2,
+            y: ch / 2
         }
         const mouseHandler = (e)=>{
             mouse.x = e.clientX;
@@ -78,9 +78,9 @@ const useMouse = ( draw, options = {} ) => {
 
         const render = ()=>{
             frameCount += 0.25
-           context.clearRect(0, 0, canvas.width, canvas.height)
-           context.fillStyle = "rgba(0,0,0, 0.01)";
-           context.fillRect(0,0, canvas.width, canvas.height);
+            context.clearRect(0, 0, canvas.width, canvas.height)
+           //context.fillStyle = "rgba(0,0,0, 0.01)";
+            //context.fillRect(0,0, canvas.width, canvas.height);
          
             drawA(context, frameCount);
             animationFrameId = window.requestAnimationFrame(render)

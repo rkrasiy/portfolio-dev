@@ -1,0 +1,31 @@
+import { useRef, useEffect, useState } from 'react'
+
+const useScroll = () => {
+    const elem = useRef(null);
+    const [ pos, setPos ] = useState(0);
+    const [ step, setStep ] = useState(-20)
+
+    function refreshStyle() {
+        let max = elem.current.clientHeight - 20;
+        if(pos + step <= -max || pos + step > -20) setStep(step * -1)
+        setPos(pos + step)
+    }
+
+    useEffect(()=>{
+        const elDom = elem.current;
+        elDom.style.transform = `translateY(${pos}px)`;
+
+        const timerId = setInterval(refreshStyle, 2000);
+        return function cleanup() {
+            clearInterval(timerId);
+        };
+    
+    },[pos])
+
+        
+
+    return elem
+
+}
+
+export default useScroll;

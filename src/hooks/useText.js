@@ -10,7 +10,7 @@ const useText = () => {
         const mouse = {
             x: null,
             y: null,
-            radius: 120
+            radius: 40
         }
 
         const dpr = 1;
@@ -20,43 +20,57 @@ const useText = () => {
         canvas.height = ch * dpr;
 
         let animationFrameId;
+        
         let textParticles = [];
 
         context.fillStyle = "white";
-  
-        const fH = 1.15;
-        const left = 3;
-        
-        context.font = `800 ${fH}vw sans-serif`;
-        context.fillText( "RUSLAN", left, 25);
+   
+        const fontSize = 22;
+        const center = ch / 2;
 
-        context.font = `800 ${fH + 0.07}vw sans-serif`;
-        context.fillText( "KRASIY", left, 45);
+        context.font = `600 ${fontSize}px sans-serif`;
+        context.fillText( "RUSLAN", 0, center - (16 / 1.8));
+
+        context.font = `600 ${fontSize}px sans-serif`;
+        context.fillText( "KRASIY", 0, center + (16 * 1.8));
 
         let textCoordinates = context.getImageData(0, 0, canvas.width, canvas.height);
-       
-        let dist = 18;
-
+        let secondWord = false;
+        
         for(let y = 0; y <  textCoordinates.height; y++){
+                        
+            if(y - center >= 0) secondWord = true;    
+
             for(let x = 0; x < textCoordinates.width; x++){
+  
                 const index = (y * 4 * textCoordinates.width) + (x * 4) + 3;
                 if(textCoordinates.data[index] > 128){
-                    
-                    const posX = x * dist;
-                    const posY = y * dist;   
-                    
+                   
+                    // const posX = 50 + (x * ds);
+                   // const posY = y + ((y - (center + 180)) * ds);   
+                    const initX = x;
+                    const initY = y;
+
+
+                    const posX = x * 9;
+                    const posY = y  ;   
+  
                     textParticles.push( {
+                        realX: initX,
+                        realY: initY,
                         x: posX,
                         y: posY,
-                        size: 4,
                         baseX: posX,
                         baseY: posY,
-                        density: (Math.random() * 40) + 15
+                        density: (Math.random() * 40) + 15,
                     })
+         
+           
+                   
                 }
             }
         }
-
+ console.log(textParticles)
         const mouseMoveHandler = (e) => {
             mouse.x = e.clientX;
             mouse.y = e.clientY;
@@ -70,7 +84,7 @@ const useText = () => {
 
         document.addEventListener('mousemove', mouseMoveHandler);
 
-        const draw = (ctx, textParticles) => {
+        const draw = (ctx, textParticles, hue) => {
             for(let i = 0; i < textParticles.length; i++){
                 const particle = textParticles[i]     
 
@@ -90,9 +104,6 @@ const useText = () => {
                     if(distance < mouse.radius) {
                         particle.x -= directionX;
                         particle.y -= directionY;
-
-
-                        
                     }else{
                         if(particle.x !== particle.baseX){
                             const dx = particle.x - particle.baseX;
@@ -103,22 +114,20 @@ const useText = () => {
                             particle.y -= dy/10;
                         }
                     }
-
-                    
                 }
             
-
                 ctx.beginPath();
-                ctx.fillStyle = `rgba( 250, 250, 250 , .73)`;
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+                ctx.arc(particle.x, particle.y, 1, 0, Math.PI * 2);
                 ctx.closePath()
                 ctx.fill();
             }
         }
-
+        let hue = 0;
         const render = ()=>{
+            hue += 0.25
             context.clearRect(0, 0, canvas.width, canvas.height)
-            draw(context, textParticles);
+            draw(context, textParticles, hue);
             animationFrameId = window.requestAnimationFrame(render)
         }
 
