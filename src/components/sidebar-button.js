@@ -10,10 +10,10 @@ export default function SidebarButton (props){
     }
 
     return (
-        <button onClick={clickHandler} className="fixed top-4 right-4 z-[51] flex flex-col overflow-hidden ">
-            <span className={`rounded-md h-[1px] w-9 bg-slate-300 mb-[7px] ${active && "rotate-[27deg]"} transition-transform origin-top-left`}></span>
+        <button onClick={clickHandler} className="absolute top-4 right-4 z-[51] flex flex-col overflow-hidden ">
+            <span className={`rounded-md h-[1px] w-9 bg-slate-300 mb-[7px] ${active && "rotate-[26deg]"} transition-transform origin-top-left`}></span>
             <span className={`rounded-md h-[1px] w-9 bg-slate-300 mb-[7px] ${active && "translate-x-[-56px]"} transition-transform`}></span>
-            <span className={`rounded-md h-[1px] w-9 bg-slate-300 mb-[7px] ${active && "rotate-[-27deg]"} transition-transform origin-bottom-left`}></span>
+            <span className={`rounded-md h-[1px] w-9 bg-slate-300 mb-[7px] ${active && "rotate-[-26deg]"} transition-transform origin-bottom-left`}></span>
         </button>
     )
 }
