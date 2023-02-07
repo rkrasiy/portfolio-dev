@@ -25,6 +25,7 @@ const Layout = () => {
                 <Sidebar close={openMenuHanlder} show={openMenu} />
                 <SocialBtns />
             </main>
+            
         </>
     )
 };
