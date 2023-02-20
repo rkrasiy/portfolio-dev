@@ -37,8 +37,13 @@ const useMouse = ( draw, options = {} ) => {
             }
         }
 
-        document.addEventListener('mousemove', mouseHandler);
-        document.addEventListener('click', mouseHandler);
+        if("ontouchstart" in window){
+            window.addEventListener('touchstart', mouseHandler);
+            window.addEventListener('touchmove', mouseHandler);
+        }else{
+            window.addEventListener('click', mouseHandler);
+            window.addEventListener('mousemove', mouseHandler);
+        }
 
         let animationFrameId;
 
@@ -106,8 +111,13 @@ const useMouse = ( draw, options = {} ) => {
 
         return ()=>{
             window.cancelAnimationFrame(animationFrameId);
-            document.removeEventListener('mousemove',  mouseHandler)
-            document.removeEventListener('click',  mouseHandler)
+            if("ontouchstart" in window){
+                window.removeEventListener('touchstart', mouseHandler);
+                window.removeEventListener('touchmove', mouseHandler);
+            }else{
+                window.removeEventListener('click', mouseHandler);
+                window.removeEventListener('mousemove', mouseHandler);
+            }
         }
 
     },[draw])
