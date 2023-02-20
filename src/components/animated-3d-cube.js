@@ -1,8 +1,7 @@
 export default function Animated3DCube(props){
     return (
         <div  className="cube">
-            <div className="btn">
-               
+            <div className="btn">     
                 <div className="side-1">React JS</div>
                 <div className="side-2">JavaScript</div>
                 <div className="side-3">CSS</div>

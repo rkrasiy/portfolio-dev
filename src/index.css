@@ -25,106 +25,39 @@
         font-family: monospace;
     }
 
-    .cube {
-        position: relative;
-        -webkit-perspective: 600px;
-        perspective: 600px;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-    }
 
-
-    .btn {
-        cursor: pointer;
-        height: 40px;
-        width: 120px;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        position: relative;
-        -webkit-transition: all .5s ease-in;
-        -o-transition: all .5s ease-in;
-        transition: all .5s ease-in;
+   .btn-toggle.active span {
+        top: 30px;
     }
-    .btn > * {
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        justify-content: center;
-        font-size: 16px;
-        font-weight: 900;
-        background: rgba(211, 0, 0, 0.3);
-        position: absolute;
+    .btn-toggle {
+        position: relative;
+        width: 30px;
+        height: 60px;
+        -webkit-appearance: none;
+        /* background: linear-gradient(0deg, #1e1e1e, #000); */
+        outline: none;
+        border-radius: 20px;
+        /* box-shadow: 0 0 0 2px #1c1c1c, 0 0 0 3px #222222, inset 0 0 10px rgb(0 0 0); */
+        box-shadow:  0 0 0 1px #222222;
+    }
+    .btn-toggle span{
+        position:absolute;
         top: 0;
-    }
-   .side-1,
-   .side-2,
-   .side-3,
-   .side-4 {
-        height: 40px;
-        width: 120px;
-    }
-    .side-1 {
-        opacity: 1;
-        -webkit-transform: rotateX(90deg) translateZ(20px);
-        transform: rotateX(90deg) translateZ(20px);
-    }
-    .side-2 {
-        -webkit-transform: rotateX(-90deg) translateZ(20px);
-        transform: rotateX(-90deg) translateZ(20px); 
-    }
-    .side-3 {
-        -webkit-transform: rotateX(0deg) translateZ(20px);
-        transform: rotateX(0deg) translateZ(20px); 
-    }
-    .side-4 {
-        -webkit-transform: rotateX(180deg) translateZ(20px);
-        transform: rotateX(180deg) translateZ(20px); 
-    }
-
-    .side-5,
-    .side-6{
-        height: 40px;
-        width: 40px;
-    }
-    .side-6 {
-        -webkit-transform: rotateY(90deg) translateZ(20px);
-        transform: rotateY(90deg) translateZ(20px);
-        right: 0; 
-    }
-    .side-5 {
         left: 0;
-        -webkit-transform: rotateY(-90deg) translateZ(20px);
-        transform: rotateY(-90deg) translateZ(20px); 
-    }
-  
-
-    .btn {
-        -webkit-transform: rotateX(0deg) rotateY(0deg);
-        transform: rotateX(0deg) rotateY(0deg);
-        -webkit-transform-origin: center center;
-        -ms-transform-origin: center center;
-        transform-origin: center center;
-        animation: rott 10s infinite linear ;
+        width: 30px;
+        height: 30px;
+        background: linear-gradient(180deg, #000, #2a2a2a);
+        border-radius: 20px;
+        /* box-shadow: 0 0 0 1px #232323; */
+        transform: scale(.98,.96);
+        transition:.5s;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
-    .side-1, .side-2 {
-        background: #202020;
-    }
-
-    .side-3, .side-4 {
-        background: red;
+    input:checked[type="checkbox"]:after {
+        left:110px;
     }
 
     .header-animate {
@@ -141,11 +74,13 @@
         animation: gradient 3s ease infinite;
     }
 
+
     @keyframes rott {
         to {
             transform: rotateX(-360deg) rotateY(0deg) rotateZ(0deg);
         }
     }
+    
     @keyframes gradient {
         0% {
             background-position: 0 50%
