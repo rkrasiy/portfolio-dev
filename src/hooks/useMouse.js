@@ -20,8 +20,15 @@ const useMouse = ( draw, options = {} ) => {
             y: ch / 2
         }
         const mouseHandler = (e)=>{
-            mouse.x = e.clientX;
-            mouse.y = e.clientY;
+            if(e.type === 'touchmove'){
+                const touch = e.touches[0] || e.changedTouches[0];
+                mouse.x = touch.clientX;
+                mouse.y = touch.clientY;
+            }else{
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
+            }
+            
 
             for(let i = 0; i < 5; i++){
                 const size = Math.random() * 10 + 1
@@ -37,12 +44,12 @@ const useMouse = ( draw, options = {} ) => {
             }
         }
 
+        window.addEventListener('click', mouseHandler);
+        window.addEventListener('mousemove', mouseHandler);
+
         if("ontouchstart" in window){
             window.addEventListener('touchstart', mouseHandler);
             window.addEventListener('touchmove', mouseHandler);
-        }else{
-            window.addEventListener('click', mouseHandler);
-            window.addEventListener('mousemove', mouseHandler);
         }
 
         let animationFrameId;
@@ -114,10 +121,10 @@ const useMouse = ( draw, options = {} ) => {
             if("ontouchstart" in window){
                 window.removeEventListener('touchstart', mouseHandler);
                 window.removeEventListener('touchmove', mouseHandler);
-            }else{
+            }
                 window.removeEventListener('click', mouseHandler);
                 window.removeEventListener('mousemove', mouseHandler);
-            }
+            
         }
 
     },[draw])
