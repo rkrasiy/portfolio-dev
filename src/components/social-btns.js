@@ -13,7 +13,7 @@ export default function SocialBtns(){
                 links.map( item => (
                     <a href={item.link} key={item.id}
                         rel="noreferrer"
-                        className={`p-2 border border-gray-900 inline-block rounded-md hover:border-gray-800 text-sky-700 hover:text-sky-500`}
+                        className={`p-2 border border-gray-900 bg-black inline-block rounded-md hover:border-gray-800 text-sky-700 hover:text-sky-500`}
                         target="_blank">
                         {item.icon}
                     </a>

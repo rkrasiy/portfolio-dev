@@ -26,14 +26,14 @@ export default function App() {
             </header>
             <main className="overflow-hidden relative">
                 {
-                    stage ? <MouseCanvas /> : <BubbleCanvas />
+                    stage ? <BubbleCanvas /> :  <MouseCanvas /> 
                 }
-                <img src="./mask2a.png" className="fixed top-0 left-0 h-screen right-0 bottom-0 w-full"  alt="mask"/>
+               <img src="./mask2a.png" className="fixed top-0 left-0 h-screen right-0 bottom-0 w-full"  alt="mask"/>
                 <Sidebar close={openMenuHanlder} show={openMenu} />
                 <div className="absolute top-1/2 z-40 right-4 flex flex-col translate-y-[-50%] gap-2">
                     <SocialBtns /> 
                 </div>
-                <StageButton click={()=>setStage(!stage)} />
+                {/* <StageButton click={()=>setStage(!stage)} /> */}
             </main>
             
         </>

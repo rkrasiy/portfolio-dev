@@ -16,26 +16,25 @@ const useBubble = ( config ) => {
         canvas.height = ch * dpr;
 
         let animationFrameId;
+        for(let i = 0; i < 500; i++){
+            const size = Math.random() * 2 + 1;
+            let speed =  Math.random() * 3 - 1.5;
+        
+            particleArray.push({
+                x: Math.random() * cw,
+                y: -size,
+                size: 2,
+                baseSize: size,
+                speedY: speed
+            })
+        }
 
         const draw = (ctx, color ) => { 
-            for(let i = 0; i < 10; i++){
-                const size = Math.random() * 10 + 1;
-                let step =  Math.random() * 3 - 1.5;
-            
-                particleArray.push({
-                    x: Math.random() * cw,
-                    y: ch / 2,
-                    size: size,
-                    baseSize: size,
-                    speedY: step
-                })
-            }
-
             for(let i = 0; i < particleArray.length; i++){
-                particleArray[i].y -= particleArray[i].speedY;
+                particleArray[i].y -= (particleArray[i].speedY) - particleArray[i].size ;
 
-                if(particleArray[i].size > 0.2) particleArray[i].size -= 0.05
-                else particleArray[i].size = particleArray[i].baseSize
+                // if(particleArray[i].size > 0.2) particleArray[i].size -= 0.05
+                // else particleArray[i].size = particleArray[i].baseSize
                 
                 ctx.fillStyle = "hsl(" + color + ", 100%, 50%)";
               
@@ -44,9 +43,8 @@ const useBubble = ( config ) => {
 
                 ctx.fill();
 
-                if(particleArray[i].size <= 0.3 || particleArray[i].y <= 100 || particleArray[i].y >= ch - 100 ){
-                	particleArray.splice(i, 1);
-                	i--;
+                if(particleArray[i].y > ch ){
+                	particleArray[i].y = 0;
                 }
             }
 

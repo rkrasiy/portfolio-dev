@@ -22,21 +22,9 @@ const useMouse = ( draw, options = {} ) => {
         const mouseHandler = (e)=>{
             mouse.x = e.clientX;
             mouse.y = e.clientY;
-        }
 
-        document.addEventListener('mousemove', mouseHandler)
-
-        let animationFrameId;
-
-        let mX = 200;
-        let mY = 200;
-        let speedX = 4.4;
-        let speedY = 4.4;
-
-        const drawA = (ctx, hue ) => {
-
-            for(let i = 0; i < 10; i++){
-                const size = Math.random() * 15 + 1
+            for(let i = 0; i < 5; i++){
+                const size = Math.random() * 10 + 1
                 particleArray.push({
                     x:  mouse.x,
                     y:  mouse.y,
@@ -47,6 +35,32 @@ const useMouse = ( draw, options = {} ) => {
                     color: i
                 })
             }
+        }
+
+        document.addEventListener('mousemove', mouseHandler);
+        document.addEventListener('click', mouseHandler);
+
+        let animationFrameId;
+
+        let mX = 200;
+        let mY = 200;
+        let speedX = 4.4;
+        let speedY = 4.4;
+
+        const drawA = (ctx, hue ) => {
+            if(particleArray.length == 0) return
+            // for(let i = 0; i < 10; i++){
+            //     const size = Math.random() * 15 + 1
+            //     particleArray.push({
+            //         x:  mouse.x,
+            //         y:  mouse.y,
+            //         size: size,
+            //         baseSize: size,
+            //         speedX: Math.random() * 3 - 1.5,
+            //         speedY: Math.random() * 3 - 1.5,
+            //         color: i
+            //     })
+            // }
 
             for(let i = 0; i < particleArray.length; i++){
                 particleArray[i].x += particleArray[i].speedX;
@@ -57,8 +71,10 @@ const useMouse = ( draw, options = {} ) => {
                 
                 ctx.fillStyle = "hsl(" + hue + ", 100%, 50%)";
 
-                ctx.beginPath();
+                ctx.beginPath(); 
+                //ctx.strokeStyle = "hsl(" + hue + ", 100%, 40%)";
                 ctx.arc(particleArray[i].x, particleArray[i].y, particleArray[i].size, 0, Math.PI * 2);
+              //  ctx.stroke();
                 ctx.fill();
 
                 if(particleArray[i].size <= 0.3 ){
@@ -91,6 +107,7 @@ const useMouse = ( draw, options = {} ) => {
         return ()=>{
             window.cancelAnimationFrame(animationFrameId);
             document.removeEventListener('mousemove',  mouseHandler)
+            document.removeEventListener('click',  mouseHandler)
         }
 
     },[draw])
