@@ -21,7 +21,7 @@ export default function App() {
         <>
             <header>
                 <LogoWeb />
-                <SidebarButton click={openMenuHanlder} />
+                <SidebarButton click={openMenuHanlder} stage={openMenu} />
                 <Title click={openMenuHanlder} />
             </header>
             <main className="overflow-hidden relative">
