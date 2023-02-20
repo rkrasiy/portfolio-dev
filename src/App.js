@@ -30,7 +30,7 @@ export default function App() {
                 }
                <img src="./mask2a.png" className="fixed top-0 left-0 h-screen right-0 bottom-0 w-full"  alt="mask"/>
                 <Sidebar close={openMenuHanlder} show={openMenu} />
-                <div className="absolute sm:top-1/2 bottom-4 z-40 left-1/2 sm:right-4 flex flex-row sm:flex-col translate-x-[-50%] sm:translate-y-[-50%] gap-2">
+                <div className="absolute sm:top-1/2 top-[90%] z-40 left-1/2 sm:left-[95%] flex flex-row sm:flex-col translate-x-[-50%] sm:translate-y-[-50%] gap-2">
                     <SocialBtns /> 
                 </div>
                 {/* <StageButton click={()=>setStage(!stage)} /> */}
