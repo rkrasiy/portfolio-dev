@@ -5,7 +5,7 @@
 @layer base {
     body {
        overflow: hidden;
-       background-color: rgb(0, 0, 0, .992);
+       background-color: rgb(4 4 4 / 99%);
     }
     .dropdown-item {
         position: relative;
