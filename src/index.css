@@ -5,7 +5,7 @@
 @layer base {
     body {
        overflow: hidden;
-       background-color: rgb(4 4 4 / 97%);
+       background-color: rgb(4 4 4 / 98%);
     }
     .dropdown-item {
         position: relative;
@@ -74,7 +74,16 @@
         animation: gradient 3s ease infinite;
     }
 
-
+    .writing-tb-rl {
+        writing-mode: tb-rl
+    }
+    .blend-overlay{
+        mix-blend-mode: overlay;
+    }
+    .blend-screen{
+        mix-blend-mode:screen;
+        background-color:rgb(255, 255, 255);
+    }
     @keyframes rott {
         to {
             transform: rotateX(-360deg) rotateY(0deg) rotateZ(0deg);
