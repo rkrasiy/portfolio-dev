@@ -1,12 +1,13 @@
 import SocialBtns from "./social-btns";
 import Card from "./card";
+import GradientTitle from "./gradient-title";
 
 export default function Sidebar (props) {
     const classes = props.show ? "right-0" : " right-[-100%]"; 
 
     return (
-        <div className={`absolute z-50 top-0 w-full h-screen bg-gray-900 ${classes} transition-all ease-out duration-500 sm:pt-28 sm:px-24 pt-20 px-6`}>
-            <div className="container h-full overflow-y-auto mx-auto">
+        <div className={`absolute z-50 top-0 w-full h-screen bg-gray-900 ${classes} transition-all ease-out duration-500 sm:pt-28 sm:pb-10 sm:px-24 pt-20 pl-6 pb-6`}>
+            <div className="container h-full overflow-y-auto mx-auto pr-6">
                 {/* <div className="text-white font-black text-5xl">Turnig ideas into real life <span className="header-animate">products</span> is my calling</div> */}
                 <div className="flex h-full flex-col">
                     <div className="max-w-xl">
@@ -21,8 +22,8 @@ export default function Sidebar (props) {
                     </div>
                     
                     <div className="pt-6 flex-auto text-white text-xl">
-                        <div className="text-3xl font-bold">PROJECTS:</div>
-                        <div className="flex flex-row pt-8 gap-8">
+                        <GradientTitle className="text-3xl font-black">Projects</GradientTitle>
+                        <div className="flex flex-col sm:items-start items-center sm:flex-row pt-8 gap-8">
                             {
                                 projects.map( item => (
                                     <Card key={item.id} item={item} />
@@ -42,21 +43,17 @@ const projects = [
         title: "To Ukraine",
         img: "./ukranian-wreath.jpg",
         alt: "ukranian land",
-        secondImg: "./logo-toukraine.png",
-        secondAlt: "web icon",
         description: "React JS, Tailwind CSS, Hooks",
         github: "https://github.es",
         site: "https://toukraine.vercel.app"
     },
     {
         id: "2",
-        title: "Array Sorting Methods",
-        img: "./ukranian-wreath.jpg",
+        title: "Visual sort an array",
+        img: "./visual-sort.JPG",
         alt: "ukranian land",
-        secondImg: "./logo-ukraine.png",
-        secondAlt: "web icon",
         description: "React JS, Hooks",
         github: "https://github.es",
-        site: "https://toukraine.vercel.app"
+        site: "https://visual-sort-array.vercel.app/"
     }
 ]

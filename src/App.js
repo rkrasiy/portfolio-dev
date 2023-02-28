@@ -21,7 +21,7 @@ export default function App() {
     return (
         <>
             <header>
-                <LogoWeb />
+                {/* <LogoWeb /> */}
                 <SidebarButton click={openMenuHanlder} stage={openMenu} />
                 <Title click={openMenuHanlder} />
             </header>
