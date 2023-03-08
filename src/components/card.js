@@ -7,7 +7,7 @@ export default function Card ({item, index}) {
                 {item.skills}
             </div>
             <div className="flex flex-col sm:flex-row">
-                <img src={item.img} className="h-60 rounded-[30px] overflow-hidden w-max min-w-min" alt="project miniatura" />
+                <img src={item.img} className="sm:h-60 rounded-[30px] overflow-hidden sm:w-72 w-full h-full" alt="project miniatura" />
                 <div className="h-full ml-0 sm:ml-8 mt-4 sm:mt-0 sm:self-baseline">
                     <h3 className="font-bold mb-6 leading-none">{item.title}</h3>
                     <p className="text-sm text-slate-400 mb-6">{item.description}</p>
