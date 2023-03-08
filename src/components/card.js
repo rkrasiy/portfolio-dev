@@ -3,7 +3,7 @@ import { FaGlobe } from "react-icons/fa";
 export default function Card ({item, index}) {
     return (
         <div className="flex items-center px-8 py-9 flex-row w-full sm:w-[480px] rounded-[50px] border border-slate-700 bg-gradient-to-b to-slate-900 from-slate-800 relative">
-            <div className="uppercase text-[10px] leading-none text-slate-500 tracking-widest font-semibold rotate-180 writing-tb-rl mr-7">
+            <div className="uppercase text-[10px] leading-none text-slate-500 tracking-widest font-semibold rotate-180 writing-tb-rl mr-7 block">
                 {item.skills}
             </div>
             <div className="flex flex-col sm:flex-row">
