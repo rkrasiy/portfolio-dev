@@ -7,8 +7,8 @@ export default function Sidebar (props) {
     const classes = props.show ? "right-0" : " right-[-100%]"; 
 
     return (
-        <div className={`absolute z-50 top-0 w-full h-screen bg-gray-900 ${classes} transition-all ease-out duration-500 sm:pt-28 sm:pb-10 sm:pl-24 sm:pr-8 pt-20 pl-6 pb-6`}>
-            <div className="container h-full overflow-y-auto mx-auto pr-6">
+        <div className={`absolute z-50 top-0 w-full h-screen bg-gray-900 ${classes} transition-all ease-out duration-500 sm:pt-28 sm:pl-24 sm:pr-8 pt-20 pl-6 h-full overflow-y-auto`}>
+            <div className="container mx-auto pr-6 pb-12 sm:pb-28">
                 <div className="flex h-full flex-col">
                     <div className="max-w-xl">
                         <div className="text-white font-black text-5xl">
